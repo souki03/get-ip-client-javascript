@@ -1,0 +1,22 @@
+<script type="application/javascript">
+        function getIP(json) {
+          const request = new XMLHttpRequest();
+            var today = new Date();
+            var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear(); 
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+          const text = "Requête sur xxx.fr | Heure : " + time + " | Date : " + date + " | IP : " + json.ip;
+          request.open("POST", "your_webhook_link");
+    
+          request.setRequestHeader('Content-type', 'application/json');
+          
+          const params = {
+            username: "3forlife.fr",
+            avatar_url: "",
+            content: text
+          }
+    
+          request.send(JSON.stringify(params));
+        }
+        getIP()
+</script>
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
